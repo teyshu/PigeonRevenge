@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,13 +9,13 @@ public class BattleHUD : MonoBehaviour
 
     public void SetHUD(Unit unit)
     {
-        _nameText.text = unit._name;
-        _levelText.text = "Óð. " + unit._level.ToString();
-        _hpSlider.maxValue = unit._maxHP;
-        _hpSlider.value = unit._currentHP;
+        _nameText.text = unit.Name;
+        _levelText.text = "Ð£Ñ€. " + unit.Level.ToString();
+        _hpSlider.maxValue = unit.MaxHp;
+        _hpSlider.value = unit.CurrentHp;
     }
 
-    public void SetHP(int hp)
+    public void SetHp(int hp)
     {
         _hpSlider.value = hp;
     }

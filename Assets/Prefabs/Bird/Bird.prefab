@@ -301,8 +301,11 @@ MonoBehaviour:
   _name: "\u0413\u043E\u043B\u0443\u0431\u044C"
   _level: 1
   _damage: 3
-  _currentHP: 20
-  _maxHP: 20
+  _currentHp: 20
+  _maxHp: 20
+  _animator: {fileID: 271772900475471262}
+  _healParticle: {fileID: 681687554906949024, guid: eca62fc7c59d3444d83561f487b948ee,
+    type: 3}
 --- !u!95 &271772900475471262
 Animator:
   serializedVersion: 5

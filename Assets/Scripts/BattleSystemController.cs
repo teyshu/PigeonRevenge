@@ -1,9 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-public enum BattleState {START, PLAYERTURN, ENEMYTURN, WON, LOST}
 
 public class BattleSystemController : MonoBehaviour
 {
@@ -15,57 +12,69 @@ public class BattleSystemController : MonoBehaviour
     public Transform _playerPos;
     public Transform _enemyPos;
 
-    private Unit _enemyUnit;
-    private Unit _playerUnit;
-
     public BattleHUD _playerHUD;
     public BattleHUD _enemyHUD;
 
     public Text _dialogueText;
 
+    
+    private Unit _enemyUnit;
+    private Unit _playerUnit;
+
     private void Start()
     {
-        Debug.Log("Start");
-        state = BattleState.START;
+        state = BattleState.Start;
         StartCoroutine(SetupBattle());
     }
 
-     IEnumerator SetupBattle()
+    private IEnumerator SetupBattle()
      {
-        Debug.Log("Units created");
-        GameObject _playerGO = Instantiate(_player, _playerPos);
+         GameObject _playerGO = Instantiate(_player, _playerPos);
         _playerUnit = _playerGO.GetComponent<Unit>();
 
         GameObject _enemyGO = Instantiate(_enemy, _enemyPos);
         _enemyUnit = _enemyGO.GetComponent<Unit>();
 
-        _dialogueText.text = "Страшный и ужасный... " + _enemyUnit._name + "! появился у вас на пути...";
+        _dialogueText.text = "РЎС‚СЂР°С€РЅС‹Р№ Рё СѓР¶Р°СЃРЅС‹Р№... " + _enemyUnit.Name + "! РїРѕСЏРІРёР»СЃСЏ Сѓ РІР°СЃ РЅР° РїСѓС‚Рё...";
 
         _playerHUD.SetHUD(_playerUnit);
         _enemyHUD.SetHUD(_enemyUnit);
 
         yield return new WaitForSeconds(2);
 
-        state = BattleState.PLAYERTURN;
+        state = BattleState.Playerturn;
         PlayerTurn();
      }
 
-    IEnumerator PlayerAttack()
+    private IEnumerator PlayerAttack()
     {
-        bool _isEnemyDead = _enemyUnit.TakeDamage(_playerUnit._damage);
+        _playerUnit.EnableAttackAnim();
+        bool isEnemyDead = _enemyUnit.TakeDamage(_playerUnit.Damage);
 
-        _enemyHUD.SetHP(_enemyUnit._currentHP);
-        _dialogueText.text = "Клюнул прямо в лоб!";
+        _enemyHUD.SetHp(_enemyUnit.CurrentHp);
+        _dialogueText.text = "РљР»СЋРЅСѓР» РїСЂСЏРјРѕ РІ Р»РѕР±!";
 
-        if (_isEnemyDead)
+        yield return new WaitForSeconds(1);
+        
+        _playerUnit.DisableAttackAnim();
+        
+        if (isEnemyDead)
         {
-            state = BattleState.WON;
+            state = BattleState.Won;
             EndBattle();
         }
         else
         {
-            state = BattleState.ENEMYTURN;
-            StartCoroutine(EnemyTurn());
+            state = BattleState.Enemyturn;
+
+            if (Random.Range(0, 15) == 7)
+            {
+                StartCoroutine(EnemyHeal()); ;
+            }
+            else
+            {
+                StartCoroutine(EnemyTurn());
+            }
         }
 
         yield return new WaitForSeconds(2);
@@ -73,69 +82,89 @@ public class BattleSystemController : MonoBehaviour
 
     private void EndBattle()
     {
-        if(state == BattleState.WON)
+        if(state == BattleState.Won)
         {
-            _dialogueText.text = "Голубь отомстил повару! Победа!";
+            _dialogueText.text = "Р“РѕР»СѓР±СЊ РѕС‚РѕРјСЃС‚РёР» РїРѕРІР°СЂСѓ! РџРѕР±РµРґР°!";
         }
-        else if (state == BattleState.LOST)
+        else if (state == BattleState.Lost)
         {
-            _dialogueText.text = "Повар порезал голубя на шаурму!!!";
+            _dialogueText.text = "РџРѕРІР°СЂ РїРѕСЂРµР·Р°Р» РіРѕР»СѓР±СЏ РЅР° С€Р°СѓСЂРјСѓ!!!";
         }
     }
 
-    IEnumerator EnemyTurn()
+    private IEnumerator EnemyTurn()
     {
         yield return new WaitForSeconds(2);
-        _dialogueText.text = _enemyUnit._name + " атакует...";
+        _dialogueText.text = _enemyUnit.Name + " Р°С‚Р°РєСѓРµС‚...";
+        _enemyUnit.EnableAttackAnim();
 
         yield return new WaitForSeconds(2);
 
-        bool _isPlayerDead = _playerUnit.TakeDamage(_enemyUnit._damage);
+        bool _isPlayerDead = _playerUnit.TakeDamage(_enemyUnit.Damage);
 
-        _playerHUD.SetHP(_playerUnit._currentHP);
+        _playerHUD.SetHp(_playerUnit.CurrentHp);
+        
+        _enemyUnit.DisableAttackAnim();
 
         yield return new WaitForSeconds(1);
 
         if (_isPlayerDead)
         {
-            state = BattleState.LOST;
+            state = BattleState.Lost;
             EndBattle();
         }
         else
         {
-            state = BattleState.PLAYERTURN;
+            state = BattleState.Playerturn;
             PlayerTurn();
         }
     }
 
-    IEnumerator PlayerHeal()
+    private IEnumerator PlayerHeal()
     {
-        _dialogueText.text = "Голубь клюет семки...";
+        _dialogueText.text = "Р“РѕР»СѓР±СЊ РєР»СЋРµС‚ СЃРµРјРєРё...";
         yield return new WaitForSeconds(1);
-        _playerUnit._currentHP = _playerUnit._maxHP;
-        _dialogueText.text = "Голубь восстановил здоровье!";
-        _playerHUD.SetHP(_playerUnit._currentHP);
+        _playerUnit.EnableHealAnim();
+        _playerUnit.CurrentHp = _playerUnit.MaxHp;
+        _dialogueText.text = "Р“РѕР»СѓР±СЊ РІРѕСЃСЃС‚Р°РЅРѕРІРёР» Р·РґРѕСЂРѕРІСЊРµ!";
+        _playerHUD.SetHp(_playerUnit.CurrentHp);
         yield return new WaitForSeconds(1);
 
-        state = BattleState.ENEMYTURN;
+        state = BattleState.Enemyturn;
+        _playerUnit.DisableHealAnim();
         StartCoroutine(EnemyTurn());
+    }
+    
+    private IEnumerator EnemyHeal()
+    {
+        _dialogueText.text = "РџРѕРІР°СЂ РµСЃС‚ РєРѕР»Р±Р°СЃСѓ...";
+        yield return new WaitForSeconds(1);
+        _enemyUnit.EnableHealAnim();
+        _enemyUnit.CurrentHp += _enemyUnit.MaxHp;
+        _dialogueText.text = "РџРѕРІР°СЂ РІРѕСЃСЃС‚Р°РЅРѕРІРёР» Р·РґРѕСЂРѕРІСЊРµ!";
+        _enemyHUD.SetHp(_enemyUnit.CurrentHp);
+        yield return new WaitForSeconds(1);
+
+        state = BattleState.Playerturn;
+        _enemyUnit.DisableHealAnim();
+        PlayerTurn();
     }
 
     private void PlayerTurn()
     {
-        _dialogueText.text = "Курлык? (Выбери действие)";
+        _dialogueText.text = "РљСѓСЂР»С‹Рє? (Р’С‹Р±РµСЂРё РґРµР№СЃС‚РІРёРµ)";
     }
 
     public void OnAttackButton()
     {
-        if (state != BattleState.PLAYERTURN) return;
+        if (state != BattleState.Playerturn) return;
 
         StartCoroutine (PlayerAttack());
     }
 
     public void OnHealButton()
     {
-        if (state != BattleState.PLAYERTURN) return;
+        if (state != BattleState.Playerturn) return;
 
         StartCoroutine(PlayerHeal());
     }
