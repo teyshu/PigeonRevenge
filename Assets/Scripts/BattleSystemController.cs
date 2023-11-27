@@ -114,6 +114,7 @@ public class BattleSystemController : MonoBehaviour
         yield return new WaitForSeconds(1);
         _playerUnit._currentHP = _playerUnit._maxHP;
         _dialogueText.text = "Голубь восстановил здоровье!";
+        _playerHUD.SetHP(_playerUnit._currentHP);
         yield return new WaitForSeconds(1);
 
         state = BattleState.ENEMYTURN;

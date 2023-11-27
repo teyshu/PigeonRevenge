@@ -1334,10 +1334,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 196949130}
-  m_LocalRotation: {x: 0.000000015454331, y: -0.70710576, z: 0.000000015454287, w: 0.7071078}
-  m_LocalPosition: {x: -4.5799727, y: -0.6022458, z: 9.490012}
+  m_LocalRotation: {x: 0.00000001545433, y: -0.7071058, z: 0.00000001545429, w: 0.7071078}
+  m_LocalPosition: {x: -2.59, y: -1.13, z: 7.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1222382088}
   m_RootOrder: -1
@@ -1353,13 +1353,35 @@ GameObject:
   - component: {fileID: 196782250}
   - component: {fileID: 193915018}
   - component: {fileID: 195013194}
+  - component: {fileID: 196949131}
   m_Layer: 0
   m_Name: Natures_Fir Tree (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &196949131
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196949130}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e8b7df3782fc4a04db305e3373159224, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &201376125
 GameObject:
   m_ObjectHideFlags: 0
@@ -2602,9 +2624,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 452503152}
   m_LocalRotation: {x: 0.0000000073117934, y: -0.9423786, z: 0.000000020596348, w: 0.3345485}
-  m_LocalPosition: {x: 8.05, y: -0.59009993, z: 15.92}
-  m_LocalScale: {x: 0.76420975, y: 0.8151, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 3.6, y: -0.59009993, z: 15.92}
+  m_LocalScale: {x: 0.92, y: 0.9812647, z: 1.203858}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1222382088}
   m_RootOrder: -1
@@ -3174,7 +3196,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Dialogue here
+  m_Text: "\u0414\u0438\u0430\u043B\u043E\u0433:"
 --- !u!222 &569215452
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3747,6 +3769,111 @@ Transform:
   m_Father: {fileID: 1222382088}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &742301336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 742301337}
+  - component: {fileID: 742301340}
+  - component: {fileID: 742301339}
+  - component: {fileID: 742301338}
+  m_Layer: 0
+  m_Name: Natures_Fir Tree (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &742301337
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742301336}
+  m_LocalRotation: {x: 0.00000001545433, y: -0.7071058, z: 0.00000001545429, w: 0.7071078}
+  m_LocalPosition: {x: 6.57, y: -0.6022458, z: -3.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1222382088}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &742301338
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742301336}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 849f41ef6bc42014bb330e7b29903d8e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!23 &742301339
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742301336}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 39f651e340882304fa6f21b321d3bea5, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &742301340
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742301336}
+  m_Mesh: {fileID: 4300000, guid: a4051385261ccbb45a4060203fd8d66e, type: 3}
 --- !u!1 &742384733
 GameObject:
   m_ObjectHideFlags: 0
@@ -4428,10 +4555,10 @@ RectTransform:
   m_Father: {fileID: 1574070418}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.6528015, y: -287}
-  m_SizeDelta: {x: 607.3056, y: 109.99933}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -0.34716797, y: 53.447998}
+  m_SizeDelta: {x: -0.6944, y: 108.8954}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &906192851
 MonoBehaviour:
@@ -6787,6 +6914,7 @@ Transform:
   - {fileID: 1849829705}
   - {fileID: 21774788}
   - {fileID: 741741937}
+  - {fileID: 742301337}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
