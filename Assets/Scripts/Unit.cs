@@ -1,10 +1,10 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Unit : MonoBehaviour
 {
     private const string _attackAnim = "isAttack";
     private const string _healAnim = "isHeal";
+    private const string _spawnAnim = "isSpawn";
     
     [SerializeField] private string _name;
     [SerializeField] private int _level;
@@ -24,6 +24,7 @@ public class Unit : MonoBehaviour
     public int CurrentHp
     {
         get => _currentHp;
+        
         set { if (value >= 0)
         {
             _currentHp = value;
@@ -58,6 +59,16 @@ public class Unit : MonoBehaviour
     public void DisableHealAnim()
     {
         _animator.SetBool(_healAnim, false);
+    }
+    
+    public void EnableSpawnAnim()
+    {
+        _animator.SetBool(_spawnAnim, true);
+    }
+    
+    public void DisableSpawnAnim()
+    {
+        _animator.SetBool(_spawnAnim, false);
     }
     
     private void Awake()
