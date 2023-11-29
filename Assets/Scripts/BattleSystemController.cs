@@ -64,7 +64,7 @@ public class BattleSystemController : MonoBehaviour
     
     private IEnumerator SetupBattle()
      {
-         GameObject _playerGO = Instantiate(_player, _playerPosOne);
+       GameObject _playerGO = Instantiate(_player, _playerPosOne);
         _playerUnit = _playerGO.GetComponent<Unit>();
 
         GameObject _enemyGO = Instantiate(_enemy, _enemyPos);
@@ -89,6 +89,7 @@ public class BattleSystemController : MonoBehaviour
         if(state == BattleState.Won)
         {
             _dialogueText.text = "Голубь отомстил повару! Победа!";
+            _playerUnit.EnableFatallityAnim();
         }
         else if (state == BattleState.Lost)
         {

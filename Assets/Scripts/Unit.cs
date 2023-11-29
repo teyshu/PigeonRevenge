@@ -15,6 +15,7 @@ public class Unit : MonoBehaviour
     [SerializeField] private GameObject _healParticle;
 
     private Transform _transform;
+    private Bird _bird;
 
     public string Name => _name;
     public int Level => _level;
@@ -40,11 +41,19 @@ public class Unit : MonoBehaviour
     public void EnableAttackAnim()
     {
         _animator.SetBool(_attackAnim, true);
+        if(_bird != null)
+        {
+            _bird.CheckSoundAttack();
+        }
     }
     
     public void DisableAttackAnim()
     {
         _animator.SetBool(_attackAnim, false);
+        if (_bird != null)
+        {
+            _bird.CheckSoundAttack();
+        }
     }
     
     public void EnableHealAnim()
@@ -53,27 +62,63 @@ public class Unit : MonoBehaviour
         var healParticle = Instantiate(_healParticle, spawnTransform, Quaternion.identity);
         healParticle.transform.Rotate(90,0,0);
         _animator.SetBool(_healAnim, true);
+        if (_bird != null)
+        {
+            _bird.CheckSoundHeal();
+        }
         Destroy(healParticle, 3f);
+
     }
     
     public void DisableHealAnim()
     {
         _animator.SetBool(_healAnim, false);
+        if (_bird != null)
+        {
+            _bird.CheckSoundHeal();
+        }
     }
     
     public void EnableSpawnAnim()
     {
         _animator.SetBool(_spawnAnim, true);
+        if (_bird != null)
+        {
+            _bird.CheckSoundBratia();
+        }
     }
     
     public void DisableSpawnAnim()
     {
         _animator.SetBool(_spawnAnim, false);
+        if (_bird != null)
+        {
+            _bird.CheckSoundBratia();
+        }
+    }
+
+    public void EnableFatallityAnim()
+    {
+        _animator.SetBool("Fat", true);
+        if (_bird != null)
+        {
+            _bird.CheckSoundFatality();
+        }
     }
     
     private void Awake()
     {
         _animator.GetComponent<Animator>();
         _transform = GetComponent<Transform>();
+    }
+
+    private void Start()
+    {
+        try
+        {
+            _bird = gameObject.GetComponent<Bird>();
+            print("’з, не получилось XD");
+        }
+        catch { }
     }
 }
