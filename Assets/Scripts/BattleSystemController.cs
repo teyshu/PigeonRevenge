@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BattleSystemController : MonoBehaviour
 {
@@ -94,6 +95,7 @@ public class BattleSystemController : MonoBehaviour
         else if (state == BattleState.Lost)
         {
             _dialogueText.text = "Повар порезал голубя на шаурму!!!";
+            SceneManager.LoadScene(1);
         }
     }
 
